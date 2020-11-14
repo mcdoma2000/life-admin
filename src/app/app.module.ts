@@ -6,6 +6,14 @@ import { MenubarModule } from 'primeng/menubar';
 import { TabViewModule } from 'primeng/tabview';
 import { AccordionModule } from 'primeng/accordion';
 import { PanelModule } from 'primeng/panel';
+import { InputTextModule } from 'primeng/inputtext';
+import { ListboxModule } from 'primeng/listbox';
+import { ButtonModule } from 'primeng/button';
+import { InputMaskModule } from 'primeng/inputmask';
+import { RippleModule } from 'primeng/ripple';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +46,7 @@ import { DeferredAnnuitiesUniComponent } from './rates/deferred-annuities-uni/de
 import { SpiaScRatesComponent } from './rates/spia-sc-rates/spia-sc-rates.component';
 import { SpiaAgePeriodBandsComponent } from './rates/spia-age-period-bands/spia-age-period-bands.component';
 import { IndexUniversalLifeComponent } from './rates/index-universal-life/index-universal-life.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -79,9 +88,17 @@ import { IndexUniversalLifeComponent } from './rates/index-universal-life/index-
     MenubarModule,
     TabViewModule,
     AccordionModule,
-    PanelModule
+    PanelModule,
+    InputTextModule,
+    ListboxModule,
+    ButtonModule,
+    InputMaskModule,
+    DialogModule,
+    ConfirmDialogModule,
+    RippleModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

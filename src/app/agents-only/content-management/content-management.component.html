@@ -3,7 +3,7 @@
     <p-panel header="Agents Only">
       <div class="p-grid">
         <div class="p-col-12">
-          <p-tabView>
+          <p-tabView [activeIndex]="activeViewIndex" (onChange)="tabSelected($event)">
             <p-tabPanel header="Change Content">
               <h5>Change Content</h5>
             </p-tabPanel>
@@ -20,11 +20,33 @@
               <h5>History</h5>
             </p-tabPanel>
             <p-tabPanel header="Add Special Producer Groups">
-              <h5>Add Special Producer Groups</h5>
+              <div class="p-grid">
+                <div class="p-col-6">
+                  <div class="p-grid">
+                    <div class="p-col-2 p-text-right"><label>Group Name:</label></div>
+                    <div class="p-col-4">
+                      <div class="p-inputgroup">
+                        <input type="text" maxlength="6" pInputText [(ngModel)]="groupToAffect" (input)="onInput($event)" (change)="onChange($event)" required title="Agent ID/Agency ID"/>
+                          <button type="button" [disabled]="disableAdd" title="Add Producer Group" pButton pRipple (click)="addGroup()" icon="pi pi-plus" styleClass="p-button-success"></button>
+                          <button type="button" [disabled]="disableDelete" title="Delete Producer Group" pButton pRipple (click)="deleteGroup()" icon="pi pi-times" styleClass="p-button-danger"></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-grid"><div class="p-col-12">&nbsp;</div></div>
+                  <div class="p-grid">
+                    <div class="p-col-6">
+                      <div class="p-text-bold">Current Special Producer Groups</div>
+                      <p-listbox [options]="producerGroups" (onClick)="loadProducerGroup($event)"></p-listbox>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-col">&nbsp;</div>
+              </div>
             </p-tabPanel>
           </p-tabView>
         </div>
       </div>
-        </p-panel>
+    </p-panel>
+    <p-confirmDialog icon="pi pi-exclamation-triangle"></p-confirmDialog>
   </div>
 </div>
