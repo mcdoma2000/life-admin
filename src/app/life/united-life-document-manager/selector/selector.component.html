@@ -41,6 +41,13 @@
           [disabled]="!canUnselectAllItems()"
           (onClick)="unselectAllItems()"></p-button>
 
+        <p-button
+          type="button"
+          [styleClass]="'app-move-button p-button-secondary p-mb-2 p-text-bold'"
+          [label]="'Clear Selects'"
+          [disabled]="!canClearSelections()"
+          (onClick)="clearSelections()"></p-button>
+
       </div>
     </div>
   </div>

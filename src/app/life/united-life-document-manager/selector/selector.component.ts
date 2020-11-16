@@ -82,6 +82,7 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
       newSelectedItems.sort((a, b) => this.sortItemsMethod(a, b));
     }
     this.writeValue(newSelectedItems);
+    this.clearSelections();
   }
 
   onSelectedDblClick(event): void {
@@ -93,8 +94,9 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
     this.availableItems = [];
     this.availableItems.push(...newAvailableItems);
 
-    const newSelectedItems = this.selectedItems.filter(x => x.value !== event.value);
+    const newSelectedItems = this.selectedItems.filter(x => x.value !== itemToMove.value);
     this.writeValue(newSelectedItems);
+    this.clearSelections();
   }
 
   selectItems(): void {
@@ -116,6 +118,7 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
     this.availableItems.push(...newAvailableItems);
     this.selectedAvailableItems = [];
     this.writeValue(newSelectedItems);
+    this.clearSelections();
   }
 
   canSelectItem(): boolean {
@@ -129,9 +132,6 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
     const selectedAllItem = this.selectedItems.find(x => x.value === 'All');
     const availableAllItem = this.availableItems.find(x => x.value === 'All');
     if (selectedAllItem) {
-      return false;
-    }
-    if (this.selectedAvailableItems.length === 0) {
       return false;
     }
     if (availableAllItem) {
@@ -172,19 +172,22 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
       return;
     }
     if (availableAllItem) {
+      newAvailableItems.push(...this.availableItems.filter(x => x.value !== 'All'));
       newAvailableItems.push(...this.selectedItems);
-
+      newAvailableItems.sort((a, b) => this.sortItemsMethod(a, b));
+      newSelectedItems.push(availableAllItem);
+      newSelectedItems.sort((a, b) => this.sortItemsMethod(a, b));
     } else {
-
+      newSelectedItems.push(...this.selectedItems);
+      newSelectedItems.push(...this.availableItems);
+      newSelectedItems.sort((a, b) => this.sortItemsMethod(a, b));
     }
-    newSelectedItems.push(...this.selectedItems);
-    newSelectedItems.push(...this.availableItems);
-    newSelectedItems.sort((a, b) => this.sortItemsMethod(a, b));
-
-    this.availableItems = [];
+    this.availableItems.length = 0;
+    this.availableItems.push(...newAvailableItems);
     this.selectedAvailableItems = [];
     this.selectedSelectedItems = [];
     this.writeValue(newSelectedItems);
+    this.clearSelections();
   }
 
   unselectItems(): void {
@@ -198,13 +201,16 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
     }
     let newAvailableItems = [];
     newAvailableItems.push(...this.availableItems);
-    newAvailableItems.push(...this.selectedSelectedItems);
+    newAvailableItems.push(...this.selectedItems.filter(x => this.selectedSelectedItems.includes(x.value)));
     newAvailableItems = newAvailableItems.sort((a, b) => this.sortItemsMethod(a, b));
-    const values = this.selectedSelectedItems.map(x => x.value);
-    const newSelectedItems = this.selectedItems.filter(x => !values.includes(x.value));
+    this.availableItems.length = 0;
+    this.availableItems.push(...newAvailableItems);
+
+    const newSelectedItems = this.selectedItems.filter(x => !this.selectedSelectedItems.includes(x.value));
     this.selectedItems = [...newSelectedItems].sort((a, b) => this.sortItemsMethod(a, b));
     this.selectedSelectedItems = [];
     this.writeValue(newSelectedItems);
+    this.clearSelections();
   }
 
   unselectAllItems(): void {
@@ -218,8 +224,18 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
     this.selectedItems = [];
     this.selectedSelectedItems = [];
     this.writeValue(this.selectedItems);
+    this.clearSelections();
   }
 
+  clearSelections(): void {
+    this.selectedAvailableItems = [];
+    this.selectedSelectedItems = [];
+  }
+
+  canClearSelections(): boolean {
+    return (this.selectedAvailableItems.length > 0 ||
+            this.selectedSelectedItems.length > 0);
+  }
 
   // Invoked when the model has been changed
   onChange: (_: any) => void = (_: any) => { this.selectionChanged.emit(this.selectedItems); };

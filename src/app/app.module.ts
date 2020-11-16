@@ -20,6 +20,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -110,6 +111,7 @@ import { SelectorComponent } from './life/united-life-document-manager/selector/
     FileUploadModule,
     DropdownModule,
     RadioButtonModule,
+    ContextMenuModule,
     FormsModule
   ],
   providers: [ConfirmationService],
