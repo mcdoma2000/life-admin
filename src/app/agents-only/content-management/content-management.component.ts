@@ -107,7 +107,7 @@ export class ContentManagementComponent implements OnInit {
   }
 
   tabSelected(event): void {
-    localStorage.setItem('cmcTabIndex', event.index + '')
+    localStorage.setItem('cmcTabIndex', event.index + '');
   }
 
 }

@@ -14,6 +14,12 @@ import { RippleModule } from 'primeng/ripple';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { FileUploadModule } from 'primeng/fileupload';
+import { DropdownModule } from 'primeng/dropdown';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +53,7 @@ import { SpiaScRatesComponent } from './rates/spia-sc-rates/spia-sc-rates.compon
 import { SpiaAgePeriodBandsComponent } from './rates/spia-age-period-bands/spia-age-period-bands.component';
 import { IndexUniversalLifeComponent } from './rates/index-universal-life/index-universal-life.component';
 import { FormsModule } from '@angular/forms';
+import { SelectorComponent } from './life/united-life-document-manager/selector/selector.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +86,8 @@ import { FormsModule } from '@angular/forms';
     DeferredAnnuitiesUniComponent,
     SpiaScRatesComponent,
     SpiaAgePeriodBandsComponent,
-    IndexUniversalLifeComponent
+    IndexUniversalLifeComponent,
+    SelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +104,12 @@ import { FormsModule } from '@angular/forms';
     DialogModule,
     ConfirmDialogModule,
     RippleModule,
+    InputTextareaModule,
+    SelectButtonModule,
+    FieldsetModule,
+    FileUploadModule,
+    DropdownModule,
+    RadioButtonModule,
     FormsModule
   ],
   providers: [ConfirmationService],

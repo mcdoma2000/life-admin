@@ -1,0 +1,58 @@
+<div class="p-grid">
+  <div class="p-col-2 p-text-bold"><br/>{{label}}:</div>
+  <div class="p-col-4">
+    <span class="p-text-bold">Available:</span><br/>
+    <p-listbox
+      [styleClass]="'app-listbox'"
+      [options]="availableItems"
+      [(ngModel)]="selectedAvailableItems"
+      [multiple]="true"
+      (onDblClick)="onAvailableDblClick($event)"></p-listbox>
+  </div>
+  <div class="p-col-2">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <br/>
+        <p-button
+          type="button"
+          [styleClass]="'app-move-button p-button-secondary p-mb-2 p-text-bold'"
+          [label]="'&gt;'"
+          [disabled]="!canSelectItem()"
+          (onClick)="selectItems()"></p-button><br/>
+
+        <p-button
+          type="button"
+          [styleClass]="'app-move-button p-button-secondary p-mb-2 p-text-bold'"
+          [label]="'&gt;&gt;'"
+          [disabled]="!canSelectAllItems()"
+          (onClick)="selectAllItems()"></p-button><br/>
+
+        <p-button
+          type="button"
+          [styleClass]="'app-move-button p-button-secondary p-mb-2 p-text-bold'"
+          [label]="'&lt;'"
+          [disabled]="!canUnselectItem()"
+          (onClick)="unselectItems()"></p-button><br/>
+
+        <p-button
+          type="button"
+          [styleClass]="'app-move-button p-button-secondary p-mb-2 p-text-bold'"
+          [label]="'&lt;&lt;'"
+          [disabled]="!canUnselectAllItems()"
+          (onClick)="unselectAllItems()"></p-button>
+
+      </div>
+    </div>
+  </div>
+  <div class="p-col-4">
+    <span class="p-text-bold">Selected:</span><br/>
+    <p-listbox
+      [styleClass]="'app-listbox'"
+      [options]="selectedItems"
+      [multiple]="true"
+      [(ngModel)]="selectedSelectedItems"
+      (ngModelChange)="updateChanges()"
+      (onDblClick)="onSelectedDblClick($event)"></p-listbox>
+  </div>
+</div>
+<div class="p-grid"><div class="p-col-12">&nbsp;</div></div>

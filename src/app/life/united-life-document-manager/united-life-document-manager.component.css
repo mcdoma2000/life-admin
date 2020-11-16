@@ -1,0 +1,13 @@
+.control-wide {
+  width: 200px;
+}
+.control-medium {
+  width: 125px;
+}
+.control-narrow {
+  width: 75px;
+}
+.control-full {
+  width: 100%;
+}
+

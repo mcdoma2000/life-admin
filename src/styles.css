@@ -8,8 +8,20 @@ html {
 }
 
 .app-header {
-  height: 2.5em;
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   padding-top: 10px;
   background-color: #466892;
   color: white;
+}
+
+.app-listbox {
+  height: 250px !important;
+  max-height: 250px !important;
+  overflow-y: scroll !important;
+}
+
+.app-move-button {
+  width: 100% !important;
 }
