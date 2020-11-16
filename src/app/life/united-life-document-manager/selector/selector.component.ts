@@ -21,6 +21,7 @@ import { SelectItem } from 'primeng/api';
 export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() items: SelectItem[];
   @Input() label: string;
+  @Input() disabled: boolean;
   @Output() selectionChanged = new EventEmitter<SelectItem[]>();
 
   availableItems: SelectItem[] = [];
@@ -122,6 +123,9 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
   }
 
   canSelectItem(): boolean {
+    if (this.disabled) {
+      return false;
+    }
     if (this.selectedAvailableItems.length > 0) {
       return true;
     }
@@ -129,6 +133,9 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
   }
 
   canSelectAllItems(): boolean {
+    if (this.disabled) {
+      return false;
+    }
     const selectedAllItem = this.selectedItems.find(x => x.value === 'All');
     const availableAllItem = this.availableItems.find(x => x.value === 'All');
     if (selectedAllItem) {
@@ -144,6 +151,9 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
   }
 
   canUnselectItem(): boolean {
+    if (this.disabled) {
+      return false;
+    }
     if (this.selectedSelectedItems.length > 0) {
       return true;
     }
@@ -151,6 +161,9 @@ export class SelectorComponent implements OnInit, OnDestroy, ControlValueAccesso
   }
 
   canUnselectAllItems(): boolean {
+    if (this.disabled) {
+      return false;
+    }
     if (this.selectedItems.length > 0) {
       return true;
     }

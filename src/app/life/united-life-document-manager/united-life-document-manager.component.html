@@ -3,188 +3,22 @@
     <p-tabView>
       <p-tabPanel header="Add New Form and Form Version">
         <p-panel header="Life &gt; Add New Form and Form Version">
-          <div class="p-grid">
-            <div class="p-col-12">
-              <p-fieldset legend="Form Details">
-                <div class="p-grid p-text-bold">
-                  <div class="p-col-12">Form</div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Form Name:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <input type="text" pInputText [(ngModel)]="addFormModel.formDetails.formName" maxlength="100" required id="form-name" class="control-wide" />
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Form Number:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <input type="text" pInputText [(ngModel)]="addFormModel.formDetails.formNumber" maxlength="20" required id="form-number" class="control-narrow" />
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Keywords:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <textarea pInputTextarea [(ngModel)]="addFormModel.formDetails.keywords" class="control-medium" style="width: 400px; height: 150px;"></textarea>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-12">
-                    Application?: <p-selectButton [options]="availableSelectOptions" [(ngModel)]="addFormModel.formDetails.application"></p-selectButton><br/>
-                  </div>
-                </div>
-                <div class="p-grid p-text-bold">
-                  <div class="p-col-12">Form Version</div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Choose PDF File:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <div>File Upload Goes Here</div>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Form Edition Month:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <p-dropdown [options]="availableFormEditionMonths" [(ngModel)]="addFormModel.formDetails.formEditionMonth"></p-dropdown>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Form Edition Year:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <p-dropdown [options]="availableFormEditionYears" [(ngModel)]="addFormModel.formDetails.formEditionYear"></p-dropdown>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Web Form System:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <p-dropdown [options]="availableWebFormSystems" [(ngModel)]="addFormModel.formDetails.webFormSystem"></p-dropdown>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Prefix:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <p-dropdown [options]="availablePrefixes" [(ngModel)]="addFormModel.formDetails.prefix"></p-dropdown>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Form Suffix:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <p-dropdown [options]="availableFormSuffixes" [(ngModel)]="addFormModel.formDetails.formSuffix"></p-dropdown>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Form Suffix, State Specific:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <p-dropdown [options]="availableFormSuffixesState" [(ngModel)]="addFormModel.formDetails.formSuffixState"></p-dropdown>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-4">
-                    <label>Form Suffix, Agency Specific:</label>
-                  </div>
-                  <div class="p-col-8">
-                    <p-dropdown [options]="availableFormSuffixesAgency" [(ngModel)]="addFormModel.formDetails.formSuffixAgency"></p-dropdown>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-12">
-                    Is Orderable? <p-selectButton [options]="availableSelectOptions" [(ngModel)]="addFormModel.formDetails.isOrderable"></p-selectButton>
-                  </div>
-                </div>
-              </p-fieldset>
-              <div class="p-grid"><div class="p-col-12">&nbsp;</div></div>
-
-              <p-fieldset legend=" Viewing Rights ">
-                <app-selector
-                  [items]="availableProducts"
-                  label="Products"
-                  [(ngModel)]="addFormModel.viewingRightsDetails.products"></app-selector>
-                <app-selector
-                  [items]="availableProducers"
-                  label="Producer Groups"
-                  [(ngModel)]="addFormModel.viewingRightsDetails.producerGroups"></app-selector>
-              </p-fieldset>
-              <div class="p-grid"><div class="p-col-12">&nbsp;</div></div>
-
-              <p-fieldset legend=" Document Library Details ">
-                <app-selector
-                  [items]="states"
-                  [label]="'States Label'"
-                  [(ngModel)]="addFormModel.documentLibraryDetails.states"></app-selector>
-                <app-selector
-                  [items]="availableTypes"
-                  label="Types"
-                  [(ngModel)]="addFormModel.documentLibraryDetails.types"></app-selector>
-                <app-selector
-                  [items]="availableCategories"
-                  label="Categories"
-                  [(ngModel)]="addFormModel.documentLibraryDetails.categories"></app-selector>
-              </p-fieldset>
-              <div class="p-grid"><div class="p-col-12">&nbsp;</div></div>
-
-              <p-fieldset legend=" New Business Builder Details ">
-                <div class="p-grid">
-                  <div class="p-col-12">
-                    <span class="p-text-bold">Product Type &amp; State</span><br/>
-                    <p-listbox
-                      id="nbb_ptype_n_states"
-                      [options]="availableProductTypeAndStates"
-                      [multiple]="true"
-                      [checkbox]="true"
-                      [(ngModel)]="addFormModel.newBusinessBuilderDetails.productTypeAndState"
-                      ></p-listbox>
-                  </div>
-                </div>
-                <div class="p-grid">
-                  <div class="p-col-12">
-                    <div *ngFor="let question of availableQuestions" class="p-field-checkbox">
-                      <p-radioButton
-                        [inputId]="question.value"
-                        name="question"
-                        [value]="question.value"
-                        [(ngModel)]="addFormModel.newBusinessBuilderDetails.question"></p-radioButton>
-                        <label [for]="question.value">{{question.label}}</label>
-                    </div>
-                  </div>
-                </div>
-              </p-fieldset>
-              <div class="p-grid"><div class="p-col-12">&nbsp;</div></div>
-            </div>
-          </div>
+          <app-document-library-editor [editType]="1"></app-document-library-editor>
         </p-panel>
       </p-tabPanel>
       <p-tabPanel header="Edit Form">
         <p-panel header="Life &gt; Edit Form">
-          <p>Edit Form</p>
+          <app-document-library-editor [editType]="2"></app-document-library-editor>
         </p-panel>
       </p-tabPanel>
       <p-tabPanel header="Add New Form Version">
         <p-panel header="Life &gt; Add New Form Version">
-          <p>Add New Form Version</p>
+          <app-document-library-editor [editType]="3"></app-document-library-editor>
         </p-panel>
       </p-tabPanel>
       <p-tabPanel header="Edit Form Version">
         <p-panel header="Life &gt; Edit Form Version">
-          <p>Edit Form Version</p>
+          <app-document-library-editor [editType]="4"></app-document-library-editor>
         </p-panel>
       </p-tabPanel>
       <p-tabPanel header="Enable/Disable Form Versions By State - Doc Lib">

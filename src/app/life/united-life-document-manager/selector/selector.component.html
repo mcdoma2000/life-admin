@@ -4,9 +4,11 @@
     <span class="p-text-bold">Available:</span><br/>
     <p-listbox
       [styleClass]="'app-listbox'"
+      [disabled]="disabled"
       [options]="availableItems"
       [(ngModel)]="selectedAvailableItems"
       [multiple]="true"
+      [disabled]="disabled"
       (onDblClick)="onAvailableDblClick($event)"></p-listbox>
   </div>
   <div class="p-col-2">
@@ -55,6 +57,7 @@
     <span class="p-text-bold">Selected:</span><br/>
     <p-listbox
       [styleClass]="'app-listbox'"
+      [disabled]="disabled"
       [options]="selectedItems"
       [multiple]="true"
       [(ngModel)]="selectedSelectedItems"

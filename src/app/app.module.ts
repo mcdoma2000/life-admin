@@ -21,6 +21,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ContextMenuModule } from 'primeng/contextmenu';
+import { TableModule } from 'primeng/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ import { SpiaAgePeriodBandsComponent } from './rates/spia-age-period-bands/spia-
 import { IndexUniversalLifeComponent } from './rates/index-universal-life/index-universal-life.component';
 import { FormsModule } from '@angular/forms';
 import { SelectorComponent } from './life/united-life-document-manager/selector/selector.component';
+import { DocumentLibraryEditorComponent } from './life/united-life-document-manager/document-library-editor/document-library-editor.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,8 @@ import { SelectorComponent } from './life/united-life-document-manager/selector/
     SpiaScRatesComponent,
     SpiaAgePeriodBandsComponent,
     IndexUniversalLifeComponent,
-    SelectorComponent
+    SelectorComponent,
+    DocumentLibraryEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +115,7 @@ import { SelectorComponent } from './life/united-life-document-manager/selector/
     DropdownModule,
     RadioButtonModule,
     ContextMenuModule,
+    TableModule,
     FormsModule
   ],
   providers: [ConfirmationService],
