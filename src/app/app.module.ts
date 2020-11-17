@@ -22,6 +22,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { TableModule } from 'primeng/table';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -116,6 +119,9 @@ import { DocumentLibraryEditorComponent } from './life/united-life-document-mana
     RadioButtonModule,
     ContextMenuModule,
     TableModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule,
     FormsModule
   ],
   providers: [ConfirmationService],
