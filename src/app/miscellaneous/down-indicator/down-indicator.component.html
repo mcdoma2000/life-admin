@@ -1,7 +1,47 @@
+<p-toast></p-toast>
 <div class="p-grid">
-  <div class="p-col-12 p-text-center">
-    <p-panel header="Miscellaneous">
-      <p>Down Indicator works!</p>
-    </p-panel>
+  <div class="p-col-7 p-text-center">
+    <p-table [value]="systems" [paginator]="true" dataKey="id" [rows]="10" editMode="row">
+      <ng-template pTemplate="caption">
+        Miscellaneous &gt; Down Indicator
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 75px;">
+            System
+          </th>
+          <th style="width: 250px;">
+            Description
+          </th>
+          <th style="width: 100px;">System Down?</th>
+          <th style="text-align: center; width: 100px;">Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-system let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="system">
+          <td style="width: 75px;">
+            {{system.name}}
+          </td>
+          <td style="width: 250px;">
+            {{system.description}}
+          </td>
+          <td pEditableColumn style="width: 100px;">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-dropdown [options]="systemStatusItems" dataKey="id" optionLabel="description" [(ngModel)]="system.status"></p-dropdown>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{system.status.description}}
+              </ng-template>
+            </p-cellEditor>
+          <td style="text-align: center;">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(system)" class="p-button-rounded p-button-text"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(system)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(system, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
+

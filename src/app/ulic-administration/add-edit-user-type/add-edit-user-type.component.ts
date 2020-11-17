@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DataService } from 'src/app/services/data.service';
 
 export interface UserType {
   id: string;
@@ -18,22 +19,17 @@ export interface UserType {
   `]
 })
 export class AddEditUserTypeComponent implements OnInit {
-  userTypes: UserType[] = [
-    { id: '1', typeName: 'Help Desk' },
-    { id: '2', typeName: 'Help Desk Plus' },
-    { id: '3', typeName: 'Life Support' },
-    { id: '4', typeName: 'LifeAdmin' },
-    { id: '5', typeName: 'LifeAdmin Plus' },
-    { id: '6', typeName: 'LifeImpersonation' }
-  ];
+  userTypes: UserType[] = [];
 
   clonedUserTypes: { [s: string]: UserType; } = {};
 
   constructor(private messageService: MessageService,
-              private confirmationService: ConfirmationService) {
+              private confirmationService: ConfirmationService,
+              private dataService: DataService) {
   }
 
   ngOnInit(): void {
+    this.userTypes = this.dataService.getUserTypes();
   }
 
   onRowEditInit(userType: UserType): void {
@@ -46,7 +42,7 @@ export class AddEditUserTypeComponent implements OnInit {
       this.messageService.add({
         severity: 'success',
         summary: 'Success',
-        detail: 'Product is updated'
+        detail: 'User type is updated'
       });
     } else {
       this.messageService.add({

@@ -1,7 +1,57 @@
+<p-toast></p-toast>
 <div class="p-grid">
-  <div class="p-col-12 p-text-center">
-    <p-panel header="Agents Only">
-      <p>Add/Edit User works!</p>
-    </p-panel>
+  <div class="p-col-7 p-text-center">
+    <p-table [value]="users" [paginator]="true" dataKey="userId" [rows]="10" editMode="row">
+      <ng-template pTemplate="caption">
+        ULIC Administration &gt; Add/Edit User
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 200px;">
+            User Name
+          </th>
+          <th style="width: 200px;">
+            User Type
+          </th>
+          <th style="text-align: center;">Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="user">
+          <td pEditableColumn style="width: 200px;">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input type="text" pInputText maxlength="50" style="width: 100%;" required [(ngModel)]="user.userName" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{user.userName}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn style="width: 200px;">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-dropdown
+                  [options]="userTypes"
+                  optionLabel="typeName"
+                  dataKey="id"
+                  style="width: 175px; min-width: 175px;"
+                  [(ngModel)]="user.userType"></p-dropdown>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{user.userType.typeName}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td style="text-align: center;">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(user)" class="p-button-rounded p-button-text"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(user)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(user, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+            <button *ngIf="!editing" pButton pRipple type="button" icon="pi pi-trash" (click)="onRowDelete(user)" class="p-button-rounded p-button-text p-button-danger"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
