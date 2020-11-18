@@ -25,6 +25,8 @@ import { TableModule } from 'primeng/table';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
+import { CheckboxModule } from 'primeng/checkbox';
+import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -122,7 +124,9 @@ import { DocumentLibraryEditorComponent } from './life/united-life-document-mana
     MessagesModule,
     MessageModule,
     ToastModule,
-    FormsModule
+    CheckboxModule,
+    TriStateCheckboxModule,
+    FormsModule,
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

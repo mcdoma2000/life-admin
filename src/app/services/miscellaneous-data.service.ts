@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { SelectItem } from 'primeng/api';
 import { Environment } from '../miscellaneous/models/environment-model';
 import { System } from '../miscellaneous/models/system-model';
 import { SystemStatus } from '../miscellaneous/models/system-status-model';

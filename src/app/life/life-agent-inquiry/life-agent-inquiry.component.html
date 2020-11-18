@@ -1,7 +1,85 @@
+<p-toast></p-toast>
 <div class="p-grid">
-  <div class="p-col-12 p-text-center">
-    <p-panel header="Life">
-      <p>Life Agent Inquiry works!</p>
+  <div class="p-col-12">
+    <p-panel header="Life &gt; Life Agent Inquiry">
+      <div class="p-grid">
+        <div class="p-col-2">
+          <label class="p-pr-1 p-text-bold">Last Name:</label>
+          <input type="text" maxlength="50" pInputText style="width: 100%;" [(ngModel)]="srchLastName" placeholder="Last Name" />
+        </div>
+        <div class="p-col-2">
+          <label class="p-pr-1 p-text-bold">First Name:</label>
+          <input type="text" maxlength="50" style="width: 100%;" pInputText [(ngModel)]="srchFirstName" placeholder="First Name" />
+        </div>
+        <div class="p-col-8">
+          <label class="p-pr-1 p-text-bold">Agent Number:</label><br/>
+          <input type="text" maxlength="6"  style="width: 100px;"pInputText [(ngModel)]="srchAgentNumber" placeholder="######"/>
+          <p-button label="Search" (onClick)="search()" styleClass="p-mr-2 p-ml-3" [style]="{'width':'100px'}" [disabled]="!srchFirstName && !srchLastName && !srchAgentNumber"></p-button>
+          <p-button label="Reset" (onClick)="reset()" [style]="{'width':'100px'}"></p-button>
+        </div>
+      </div>
+      <div class="p-grid"><div class="p-col-12">&nbsp;</div></div>
+      <div class="p-grid">
+        <div class="p-col-7">
+          <p-table
+            #table
+            sortMode="multiple"
+            [globalFilterFields]="['name','agentId','active']"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            styleClass="p-datatable-striped"
+            [value]="agents"
+            [paginator]="true"
+            [rows]="10"
+            [loading]="loading"
+            styleClass="p-datatable-sm"
+            >
+            <ng-template pTemplate="emptymessage">
+              <tr><td colspan="3">No agents were found.</td></tr>
+            </ng-template>
+            <ng-template pTemplate="caption">
+              Agents
+            </ng-template>
+            <ng-template pTemplate="header">
+              <tr>
+                <th style="width: 200px;" pSortableColumn="name">
+                  Name <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th style="width: 75px;" pSortableColumn="agentId">
+                  Agent ID <p-sortIcon field="agentId"></p-sortIcon>
+                </th>
+                <th style="width: 50px; text-align: center;" pSortableColumn="active">
+                  Active <p-sortIcon field="active"></p-sortIcon>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <input pInputText type="text" (input)="table.filter($event.target.value, 'name', 'contains')" placeholder="Name" class="p-column-filter">
+                </th>
+                <th>
+                  <input pInputText type="text" (input)="table.filter($event.target.value, 'agentId', 'contains')" placeholder="Agent Number" class="p-column-filter">
+                </th>
+                <th style="text-align: center;">
+                  <p-triStateCheckbox (onChange)="activeFilterOnChange(table, $event, 'active', 'equals')" styleClass="p-column-filter"></p-triStateCheckbox>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-agent>
+              <tr>
+                <td style="width: 200px;">
+                  {{agent.name}}
+                </td>
+                <td style="width: 75px; text-align: center;">
+                  {{agent.agentId}}
+                </td>
+                <td style="width: 50px;">
+                  <p-checkbox [disabled]="true" [(ngModel)]="agent.active" [binary]="true"></p-checkbox>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+       </div>
+      </div>
     </p-panel>
   </div>
 </div>
