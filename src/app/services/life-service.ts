@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Agent } from '../life/models/agent-model';
+import { LifeCaps } from '../life/models/life-caps-model';
 
 @Injectable({
   providedIn: 'root'
@@ -113,6 +114,110 @@ export class LifeService {
       { name: 'Test, Agent', agentId: '1500520020', active: true },
       { name: 'Thomas, Tamara A', agentId: '1500520099', active: true },
       { name: 'Veglahn, Jim', agentId: '1500520095', active: true }
+    ];
+  }
+
+  getLifeCapsEntries(): LifeCaps[] {
+    return [{
+          wrongCase: 'Bastion Ins Group Llc',
+          correctCase: 'Bastion Ins Group LLC'
+      }, {
+          wrongCase: 'Dipippa',
+          correctCase: 'DiPippa'
+      }, {
+          wrongCase: 'Dipippa Insurance & Financial Llc',
+          correctCase: 'DiPippa Insurance & Financial LLC'
+      }, {
+          wrongCase: 'Fra',
+          correctCase: 'FRA'
+      }, {
+          wrongCase: 'Mcadams',
+          correctCase: 'McAdams'
+      }, {
+          wrongCase: 'Mcallister',
+          correctCase: 'McAllister'
+      }, {
+          wrongCase: 'Mcallister Fncl Serv',
+          correctCase: 'McAllister Fncl Serv'
+      }, {
+          wrongCase: 'Mcatee',
+          correctCase: 'McAtee'
+      }, {
+          wrongCase: 'Mcbride',
+          correctCase: 'McBride'
+      }, {
+          wrongCase: 'Mccain',
+          correctCase: 'McCain'
+      }, {
+          wrongCase: 'Mccall',
+          correctCase: 'McCall'
+      }, {
+          wrongCase: 'Mccallister',
+          correctCase: 'McCallister'
+      }, {
+          wrongCase: 'Mccarthy',
+          correctCase: 'McCarthy'
+      }, {
+          wrongCase: 'Mcchesney',
+          correctCase: 'McChesney'
+      }, {
+          wrongCase: 'Mcclain',
+          correctCase: 'McClain'
+      }, {
+          wrongCase: 'Mcclellan',
+          correctCase: 'McClellan'
+      }, {
+          wrongCase: 'Mcclintock',
+          correctCase: 'McClintock'
+      }, {
+          wrongCase: 'Mccloud',
+          correctCase: 'McCloud'
+      }, {
+          wrongCase: 'Mcclure',
+          correctCase: 'McClure'
+      }, {
+          wrongCase: 'Mccollum',
+          correctCase: 'McCollum'
+      }, {
+          wrongCase: 'Mccombs',
+          correctCase: 'McCombs'
+      }, {
+          wrongCase: 'Mcconnell',
+          correctCase: 'McConnell'
+      }, {
+          wrongCase: 'Mccoy',
+          correctCase: 'McCoy'
+      }, {
+          wrongCase: 'Mccullough',
+          correctCase: 'McCullough'
+      }, {
+          wrongCase: 'Mcdonald',
+          correctCase: 'McDonald'
+      }, {
+          wrongCase: 'Mcfarland',
+          correctCase: 'McFarland'
+      }, {
+          wrongCase: 'Mckinney',
+          correctCase: 'McKinney'
+      }, {
+          wrongCase: 'Mckinney Spencer',
+          correctCase: 'McKinney Spencer'
+      }, {
+          wrongCase: 'Mclean',
+          correctCase: 'McLean'
+      }, {
+          wrongCase: 'Mcnulty',
+          correctCase: 'McNulty'
+      }, {
+          wrongCase: 'Millhiser-smith Agency',
+          correctCase: 'Millhiser-Smith Agency'
+      }, {
+          wrongCase: 'Partners Advantage Midwest Llc',
+          correctCase: 'Partners Advantage Midwest LLC'
+      }, {
+          wrongCase: 'Pmc',
+          correctCase: 'PMC'
+      }
     ];
   }
 }

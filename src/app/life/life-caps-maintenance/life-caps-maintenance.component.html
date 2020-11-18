@@ -1,7 +1,48 @@
+<p-toast></p-toast>
 <div class="p-grid">
-  <div class="p-col-12 p-text-center">
-    <p-panel header="Life">
-      <p>Life Caps Maintenance works!</p>
-    </p-panel>
+  <div class="p-col-7 p-text-center">
+    <p-table
+      [value]="lifeCaps"
+      [paginator]="true"
+      [rows]="10"
+      dataKey="wrongCase"
+      editMode="row">
+      <ng-template pTemplate="caption">
+        Life &gt; Life Capitalization Maintenance
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 175px;">
+            Wrong Case
+          </th>
+          <th style="width: 175px;">
+            Correct Case
+          </th>
+          <th style="text-align: center; width: 100px;">Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-lifeCap let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="lifeCap">
+          <td style="width: 175px;">
+            {{lifeCap.wrongCase}}
+          </td>
+          <td pEditableColumn style="width: 100px;">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input type="text" pInputText [(ngModel)]="lifeCap.correctCase">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{lifeCap.correctCase}}
+              </ng-template>
+            </p-cellEditor>
+          <td style="text-align: center;">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(lifeCap)" class="p-button-rounded p-button-text"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(lifeCap)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(lifeCap, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
+

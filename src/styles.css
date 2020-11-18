@@ -25,3 +25,7 @@ html {
 .app-move-button {
   width: 100% !important;
 }
+
+.p-submenu-list {
+  width: 250px !important;
+}

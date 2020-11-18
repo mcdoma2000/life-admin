@@ -36,7 +36,7 @@ export class DownIndicatorComponent implements OnInit {
       this.messageService.add({
         severity: 'success',
         summary: 'Success',
-        detail: 'User is updated'
+        detail: 'Down Indicator is updated for ' + system.description
       });
   }
 
